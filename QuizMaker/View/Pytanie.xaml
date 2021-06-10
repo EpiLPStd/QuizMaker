@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="QuizMaker.View.Pytanie"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:QuizMaker.View"
+             xmlns:vm="clr-namespace:QuizMaker.ViewModel"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type=vm:PytanieViewModel, IsDesignTimeCreatable=False}">
+    
+    <UserControl.Resources>
+        <DataTemplate x:Key="odpowiedzi">
+            <RadioButton GroupName="{Binding Id}" IsChecked="{Binding CzyPrawidłowa, Mode=TwoWay}" 
+                         Margin="280, 10" Background="#988332" BorderThickness="0">
+
+                <TextBox Text="{Binding Treść, Mode=TwoWay}" TextWrapping="Wrap" Width="200" Padding="5" 
+                         FontFamily="Calibri" FontSize="13" Background="#988332" Foreground="#000000" BorderThickness="0"/>
+            </RadioButton>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <Grid>
+        <StackPanel Background="#000000">
+            <TextBox TextWrapping="Wrap" Text="{Binding TreśćPytania, Mode=TwoWay}" Width="800" Padding="10" TextAlignment="Center"
+                     FontFamily="Calibri" FontSize ="20" Background="#000000" Foreground="#FFFFFF" BorderBrush="#988332"/>
+
+            <ListBox HorizontalContentAlignment="Stretch" VerticalAlignment="Stretch" ItemTemplate="{StaticResource odpowiedzi}" 
+                     ItemsSource="{Binding Odpowiedzi}" Height="auto" Background="#000000" BorderBrush="#988332"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
